@@ -11,7 +11,7 @@ def load_tasks():
                 for task in data:
                     text=""
                     if task["color"]== "green":
-                        text="TAREA REALIZADA - "+ task["text"]
+                        text="✔ - "+ task["text"]
                     else:
                         text= task["text"]
                     task_list.insert(tkinter.END, text)
@@ -23,7 +23,7 @@ def save_tasks():
         data = []
         for i in range(task_list.size()):
             text = task_list.get(i)
-            text = text.replace("TAREA REALIZADA - ","")
+            text = text.replace("✔ - ","")
             color = task_list.itemcget(i, "fg")
             data.append({"text": text, "color": color})
         with open("tasks.json", "w") as f:
