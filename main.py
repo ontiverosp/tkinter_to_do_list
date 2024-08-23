@@ -52,7 +52,9 @@ def delete_task():
         if task_index:
             task_list.delete(task_index)
             save_tasks()
-    
+            
+bg_color = "#4c5561"
+field_color = "#8ea2bd"
 
 window = tkinter.Tk()
 window.title("Lista de Tareas")
@@ -65,10 +67,10 @@ frame1.pack(side="top")
 new_task_label = tkinter.Label(frame1, text="Tarea Nueva")
 new_task_label.pack()
 
-new_task_txt = tkinter.Entry(frame1, width=60)
+new_task_txt = tkinter.Entry(frame1, width=60, bg=field_color)
 new_task_txt.pack(padx=25, side="left")
 
-button = tkinter.Button(frame1, text="Salvar tarea", command= enter_data)
+button = tkinter.Button(frame1, text="Salvar tarea", command= enter_data, fg='white', bg='#35383b')
 button.pack(padx=25, pady=5)
 
 task_list_label = tkinter.Label(window, text="Tareas", font=("TkDefaultFont", 16))
@@ -77,14 +79,23 @@ task_list_label.pack(pady=10)
 frame2 = tkinter.Frame(window)
 frame2.pack(side="bottom")
 
-task_list = tkinter.Listbox(window, selectbackground="light grey", height=15, font=("TkDefaultFont", 12), selectforeground="black")
+task_list = tkinter.Listbox(window, selectbackground="light blue",selectforeground='dark blue', activestyle='none', height=15, font=("TkDefaultFont", 12), bg=field_color)
 task_list.pack(padx=25,pady=10, expand=True, fill=BOTH)
 
-button = tkinter.Button(frame2, text="Tarea Realizada", command= mark_done)
-button.pack(side="left", padx=20, pady=5)
+button1 = tkinter.Button(frame2, text="Tarea Realizada", command= mark_done, fg='white', bg='#7bb096')
+button1.pack(side="left", padx=20, pady=5)
 
-button = tkinter.Button(frame2, text="Borrar Tarea", command= delete_task)
-button.pack(side="right", padx=20, pady=5)
+button2 = tkinter.Button(frame2, text="Borrar Tarea", command= delete_task, fg='white', bg='#f55872')
+button2.pack(side="right", padx=20, pady=5)
+
+window.config(bg=bg_color)
+frame1.config(bg=bg_color)
+frame2.config(bg=bg_color)
+new_task_label.config(bg=bg_color)
+task_list_label.config(bg=bg_color)
+button.config(highlightbackground=bg_color)
+button1.config(highlightbackground=bg_color)
+button2.config(highlightbackground=bg_color)
 
 
 load_tasks()
